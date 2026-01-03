@@ -6,8 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let gymDays = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 
   function getToday() {
-    return new Date().toISOString().split("T")[0];
-  }
+  const d = new Date();
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 
   function saveDays() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(gymDays));
